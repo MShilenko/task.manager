@@ -1,38 +1,4 @@
-<?php
-if (!empty($_POST)) {
-    if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/authenticationСheck.php';
-        $status = authenticationСheck($logins, $passwords);
-    }
-}
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="/styles.css" rel="stylesheet">
-    <title>Project - ведение списков</title>
-</head>
-
-<body>
-
-    <div class="header">
-        <div class="logo"><img src="/i/logo.png" width="68" height="23" alt="Project"></div>
-        <div class="clearfix"></div>
-    </div>
-
-    <div class="clear">
-        <ul class="main-menu">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">Новости</a></li>
-            <li><a href="#">Каталог</a></li>
-        </ul>
-    </div>
-
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/template/header.php' ?>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td class="left-collum-index">
@@ -87,18 +53,4 @@ if (!empty($_POST)) {
             </td>
         </tr>
     </table>
-
-    <div class="clearfix">
-        <ul class="main-menu bottom">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">Новости</a></li>
-            <li><a href="#">Каталог</a></li>
-        </ul>
-    </div>
-
-    <div class="footer">&copy;&nbsp;<nobr><?=date('Y')?></nobr> Project.</div>
-
-</body>
-</html>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/template/footer.php' ?>
