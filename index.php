@@ -1,21 +1,25 @@
 <?php
-include __DIR__ . '/include/logins.php';
-include __DIR__ . '/include/passwords.php';
-include __DIR__ . '/authenticationСheck.php';
-$status = authenticationСheck($logins, $passwords);
+if (!empty($_POST)) {
+    if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
+        include $_SERVER['DOCUMENT_ROOT'] . '/authenticationСheck.php';
+        $status = authenticationСheck($logins, $passwords);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="styles.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
     <title>Project - ведение списков</title>
 </head>
 
 <body>
 
     <div class="header">
-        <div class="logo"><img src="i/logo.png" width="68" height="23" alt="Project"></div>
+        <div class="logo"><img src="/i/logo.png" width="68" height="23" alt="Project"></div>
         <div class="clearfix"></div>
     </div>
 
@@ -42,7 +46,7 @@ $status = authenticationСheck($logins, $passwords);
 
                 <div class="project-folders-menu">
                     <ul class="project-folders-v">
-                        <li class="project-folders-v-active"><a href="#">Авторизация</a></li>
+                        <li class="project-folders-v-active"><a href="/?login=yes">Авторизация</a></li>
                         <li><a href="#">Регистрация</a></li>
                         <li><a href="#">Забыли пароль?</a></li>
                     </ul>
@@ -50,11 +54,11 @@ $status = authenticationСheck($logins, $passwords);
                 </div>
 
                 <div class="index-auth">
-                    <?php if ($status['success']): ?>
-                        <div class="status success"><?=$successMessage?></div>
+                    <?php if (isset($status['success']) && $status['success'] == true): ?>
+                        <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/success.php';?>
                     <?php else: ?>
-                        <?php if ($status['error']): ?>
-                            <div class="status error"><?=$errorMessage?></div>
+                        <?php if (isset($status['error']) && $status['error'] == true): ?>
+                            <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/error.php';?>
                         <?php endif;?>
                         <?php if (isset($_GET['login']) && $_GET['login'] == 'yes'): ?>
                             <form action="/?login=yes" method="POST">

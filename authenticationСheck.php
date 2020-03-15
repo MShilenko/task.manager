@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . '/include/success.php';
-
 /**
  * @param  array  $logins
  * @param  array  $passwords
@@ -13,8 +11,8 @@ function getUsers($logins = [], $passwords = [])
 
     foreach ($logins as $id => $login) {
         $result[$id] = [
-            'login'    => $login['login'],
-            'password' => $passwords[$id]['password'],
+            'login'    => $login,
+            'password' => $passwords[$id],
         ];
     }
 
@@ -35,18 +33,13 @@ function authenticationСheck($logins = [], $passwords = [])
 
     $users = getUsers($logins, $passwords);
 
-    if (!empty($_POST)) {
-        if (!empty($_POST['login']) && !empty($_POST['password'])) {
-            foreach ($users as $user) {
-                if ($_POST['login'] == $user['login'] && $_POST['password'] == $user['password']) {
-                    $result['success'] = true;
-                    break;
-                } else {
-                    $result['error'] = true;
-                }
-            }
+    foreach ($users as $user) {
+        if ($_POST['login'] == $user['login'] && $_POST['password'] == $user['password']) {
+            $result['success'] = true;
+            break;
+        } else {
+            $result['error'] = true;
         }
     }
-
     return $result;
 }

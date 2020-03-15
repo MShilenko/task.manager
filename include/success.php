@@ -1,4 +1,1 @@
-<?php
-
-$successMessage = 'Авторизация прошла успешно';
-$errorMessage = 'Данные введены неверно.'; 
+<div class="status success">Авторизация прошла успешно</div>

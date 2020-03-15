@@ -1,0 +1,1 @@
+<div class="status error">Введите логин и пароль</div>
