@@ -193,3 +193,22 @@ a:hover {
 .iat label {
 	display: block;
 }
+
+.status{
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.status.success{
+    background: #00800070;
+    border-color: #008000;
+}
+
+.status.error{
+    background: #ff000052;
+    border-color: #ff0000;
+}
+
