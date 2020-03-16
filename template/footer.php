@@ -50,7 +50,7 @@ $secondMenu = functions\getMenuItems($menuItems);
     <div class="clearfix">
         <ul class="main-menu bottom">
             <?php foreach($secondMenu as $link => $title): ?>
-                <li><a href="<?=$link?>"><?=$title?></a></li>
+                <li<?=functions\isCurrentPage($link) ? ' class="active"' : '';?>><a href="<?=$link?>"><?=$title?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>

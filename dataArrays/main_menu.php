@@ -2,28 +2,33 @@
 
 $menuItems = [
     [
-        'title' => 'About',
-        'path'  => '/route/about/',
+        'title' => 'Главная',
+        'path'  => '/',
         'sort'  => 1,
     ],
     [
-        'title' => 'Contacts of our company',
-        'path'  => '/route/contacts/',
+        'title' => 'О компании',
+        'path'  => '/route/about/',
         'sort'  => 2,
     ],
     [
-        'title' => 'Portfolio',
-        'path'  => '/route/portfolio/',
-        'sort'  => 4,
-    ],
-    [
-        'title' => 'Team',
-        'path'  => '/route/team/',
+        'title' => 'Контакты',
+        'path'  => '/route/contacts/',
         'sort'  => 3,
     ],
     [
-        'title' => 'Stocks',
-        'path'  => '/route/stocks/',
+        'title' => 'Портфолио',
+        'path'  => '/route/portfolio/',
         'sort'  => 5,
+    ],
+    [
+        'title' => 'Команда',
+        'path'  => '/route/team/',
+        'sort'  => 4,
+    ],
+    [
+        'title' => 'Скидки',
+        'path'  => '/route/stocks/',
+        'sort'  => 6,
     ],
 ];

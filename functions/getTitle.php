@@ -9,13 +9,9 @@ namespace functions;
  */
 function getTitle(array $menuItems = []): string
 {
-    $title = '';
-
     for ($i = 0; $i < count($menuItems); $i++) {
-        if ($menuItems[$i]['path'] == $_SERVER['REQUEST_URI']) {
-            return $title = $menuItems[$i]['title'];
+        if (isCurrentPage($menuItems[$i]['path'])) {
+            return $menuItems[$i]['title'];
         }
     }
-
-    return $title;
 }

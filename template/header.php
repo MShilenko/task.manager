@@ -12,7 +12,8 @@ if (!empty($_POST)) {
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/getTitle.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/main_menu.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/getMenuItems.php';
-$mainMenu = functions\getMenuItems($menuItems, 'asc');
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/isCurrentPage.php';
+$mainMenu = functions\getMenuItems($menuItems, SORT_ASC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +33,7 @@ $mainMenu = functions\getMenuItems($menuItems, 'asc');
     <div class="clear">
         <ul class="main-menu">
             <?php foreach ($mainMenu as $link => $title): ?>
-                <li<?$link == $_SERVER['REQUEST_URI'] ? ' class="active"' : ''?>><a href="<?=$link?>"><?=$title?></a></li>
+                <li<?=functions\isCurrentPage($link) ? ' class="active"' : '';?>><a href="<?=$link?>"><?=$title?></a></li>
             <?php endforeach;?>
         </ul>
     </div>
