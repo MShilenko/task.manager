@@ -7,26 +7,21 @@ namespace functions;
  * @param  array  $menuItems
  * @param  string  $order
  * @param  string  $additionalClass
- * @return array $result
  */
-function getMenuItems(array $menuItems = [], int $order = null, string $additionalClass = ''): array
+function getMenuItems(array $menuItems = [], int $order = null, string $additionalClass = '')
 {
-    $result     = [];
+    $menu       = [];
     $sortColumn = array_column($menuItems, 'sort');
 
     if (!is_null($order)) {
         array_multisort($sortColumn, $order, $menuItems);
     }
 
-    if(!empty($additionalClass)){
-        $result['additionalClass'] = $additionalClass;
-    }
-
     foreach ($menuItems as $item) {
-        $result[$item['path']] = trimTitle($item['title']);
+        $menu[$item['path']] = trimTitle($item['title']);
     }
 
-    return $result;
+    include $_SERVER['DOCUMENT_ROOT'] . '/template/menu.php';
 }
 
 /**

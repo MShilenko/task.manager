@@ -13,7 +13,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/functions/getTitle.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/main_menu.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/getMenuItems.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/isCurrentPage.php';
-$mainMenu = functions\getMenuItems($menuItems, SORT_ASC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,9 +30,11 @@ $mainMenu = functions\getMenuItems($menuItems, SORT_ASC);
     </div>
 
     <div class="clear">
-        <ul class="main-menu">
-            <?php foreach ($mainMenu as $link => $title): ?>
-                <li<?=functions\isCurrentPage($link) ? ' class="active"' : '';?>><a href="<?=$link?>"><?=$title?></a></li>
-            <?php endforeach;?>
-        </ul>
+        <?php functions\getMenuItems($menuItems, SORT_ASC); ?>
     </div>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="left-collum-index">
+
+                    <h1><?=functions\getTitle($menuItems)?></h1>
