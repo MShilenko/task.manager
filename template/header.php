@@ -1,13 +1,14 @@
 <?php
-$isAuth == false;
-
 if (!empty($_POST)) {
     include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/authenticationCheck.php';
+
+    $isAuth = false;
     $isAuth = authenticationCheck($logins, $passwords);
 }
 
+include $_SERVER['DOCUMENT_ROOT'] . '/route/getTitle.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/route/main_menu.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/route/getMenuItems.php';
 $mainMenu = route\getMenuItems($menuItems, 'asc');

@@ -7,7 +7,7 @@ $menuItems = [
         'sort'  => 1,
     ],
     [
-        'title' => 'Contacts',
+        'title' => 'Contacts of our company',
         'path'  => '/route/contacts/',
         'sort'  => 2,
     ],

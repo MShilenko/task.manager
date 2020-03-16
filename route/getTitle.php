@@ -1,8 +1,21 @@
 <?php
 
+namespace route;
+
+/**
+ * Return title for current page
+ * @param  array  $menuItems
+ * @return string $title
+ */
 function getTitle(array $menuItems = []): string
 {
-	foreach ($menuItems as $item) {
-		
-	}
+    $title = '';
+
+    for ($i = 0; $i < count($menuItems); $i++) {
+        if ($menuItems[$i]['path'] == $_SERVER['REQUEST_URI']) {
+            return $title = $menuItems[$i]['title'];
+        }
+    }
+
+    return $title;
 }

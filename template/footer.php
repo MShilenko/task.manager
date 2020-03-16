@@ -16,7 +16,7 @@ $secondMenu = route\getMenuItems($menuItems);
                     <?php if ($isAuth): ?>
                         <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/success.php';?>
                     <?php else: ?>
-                        <?php if (!$isAuth): ?>
+                        <?php if (!empty($_POST) && !$isAuth): ?>
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/error.php';?>
                         <?php endif;?>
                         <?php if (isset($_GET['login']) && $_GET['login'] == 'yes'): ?>

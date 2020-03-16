@@ -24,7 +24,7 @@ function getMenuItems(array $menuItems = [], string $order = ''): array
     }
 
     foreach ($menuItems as $item) {
-        $result[$item['path']] = $item['title'];
+        $result[$item['path']] = strlen($item['title']) > 15 ? mb_strimwidth($item['title'], 0, 14, "...") : $item['title'];
     }
 
     return $result;
