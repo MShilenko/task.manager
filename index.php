@@ -1,11 +1,9 @@
 <?php
 if (!empty($_POST)) {
-    if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
-        include $_SERVER['DOCUMENT_ROOT'] . '/authenticationСheck.php';
-        $status = authenticationСheck($logins, $passwords);
-    }
+    include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/authenticationCheck.php';
+    $isAuth = authenticationCheck($logins, $passwords);
 }
 ?>
 <!DOCTYPE html>
@@ -54,10 +52,10 @@ if (!empty($_POST)) {
                 </div>
 
                 <div class="index-auth">
-                    <?php if (isset($status['success']) && $status['success'] == true): ?>
+                    <?php if ($isAuth ?? false): ?>
                         <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/success.php';?>
                     <?php else: ?>
-                        <?php if (isset($status['error']) && $status['error'] == true): ?>
+                        <?php if (isset($isAuth) && $isAuth == false): ?>
                             <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/error.php';?>
                         <?php endif;?>
                         <?php if (isset($_GET['login']) && $_GET['login'] == 'yes'): ?>
