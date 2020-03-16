@@ -1,6 +1,6 @@
 <?php
 
-namespace route;
+namespace functions;
 
 /**
  * Return title for current page

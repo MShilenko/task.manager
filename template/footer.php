@@ -1,5 +1,5 @@
 <?php
-$secondMenu = route\getMenuItems($menuItems);
+$secondMenu = functions\getMenuItems($menuItems);
 ?>  
 			<td class="right-collum-index">
 

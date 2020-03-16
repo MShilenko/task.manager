@@ -1,17 +1,18 @@
 <?php
-if (!empty($_POST)) {
-    include $_SERVER['DOCUMENT_ROOT'] . '/include/logins.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/include/passwords.php';
-    include $_SERVER['DOCUMENT_ROOT'] . '/authenticationCheck.php';
+$isAuth = false;
 
-    $isAuth = false;
-    $isAuth = authenticationCheck($logins, $passwords);
+if (!empty($_POST)) {
+    include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/logins.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/passwords.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/functions/authenticationCheck.php';
+
+    $isAuth = functions\authenticationCheck($logins, $passwords);
 }
 
-include $_SERVER['DOCUMENT_ROOT'] . '/route/getTitle.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/route/main_menu.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/route/getMenuItems.php';
-$mainMenu = route\getMenuItems($menuItems, 'asc');
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/getTitle.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/main_menu.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/getMenuItems.php';
+$mainMenu = functions\getMenuItems($menuItems, 'asc');
 ?>
 <!DOCTYPE html>
 <html>

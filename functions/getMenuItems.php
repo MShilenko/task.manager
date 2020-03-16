@@ -1,6 +1,6 @@
 <?php
 
-namespace route;
+namespace functions;
 
 /**
  * Get menu items and setting	

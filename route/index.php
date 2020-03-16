@@ -3,7 +3,7 @@
         <tr>
             <td class="left-collum-index">
 
-                <h1><?=route\getTitle($menuItems)?></h1>
+                <h1><?=functions\getTitle($menuItems)?></h1>
 
             </td>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/template/footer.php' ?>
