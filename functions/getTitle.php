@@ -7,7 +7,7 @@ namespace functions;
  * @param  array  $menuItems
  * @return string $title
  */
-function getTitle(array $menuItems = []): string
+function getTitle(array $menuItems): string
 {
     foreach ($menuItems as $menuItem) {
         if (isCurrentPage($menuItem['path'])) {

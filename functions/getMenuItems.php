@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/functions/sortOptions.php';
  * @param  string  $sort
  * @param  string  $additionalClass
  */
-function getMenuItems(array $menuItems = [], string $sort, string $additionalClass = '')
+function getMenuItems(array $menuItems, string $sort, string $additionalClass = '')
 {   
     usort($menuItems, 'functions\\' . $sort);
 
