@@ -30,11 +30,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/functions/isCurrentPage.php';
     </div>
 
     <div class="clear">
-        <?php functions\getMenuItems($menuItems, SORT_ASC); ?>
+        <?php functions\getMenuItems($menuItems, 'cmpAsc'); ?>
     </div>
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td class="left-collum-index">
 
-                    <h1><?=functions\getTitle($menuItems)?></h1>
+                    <h1><?= functions\getTitle($menuItems) ?></h1>

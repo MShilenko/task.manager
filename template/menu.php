@@ -1,5 +1,5 @@
 <ul class="main-menu <?=$additionalClass ?? ''?>">
-    <?php foreach ($menu as $link => $title): ?>
-        <li class="<?=functions\isCurrentPage($link) ? 'active' : ''?>"><a href="<?=$link?>"><?=$title?></a></li>
+    <?php foreach ($menuItems as $item): ?>
+        <li class="<?= functions\isCurrentPage($item['path']) ? 'active' : '' ?>"><a href="<?= $item['path'] ?>"><?=functions\trimTitle($item['title'])?></a></li>
     <?php endforeach;?>
 </ul>

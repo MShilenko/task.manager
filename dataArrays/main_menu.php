@@ -17,7 +17,7 @@ $menuItems = [
         'sort'  => 3,
     ],
     [
-        'title' => 'Портфолио',
+        'title' => 'Портфолио нашего сайта',
         'path'  => '/route/portfolio/',
         'sort'  => 5,
     ],

@@ -9,13 +9,11 @@ namespace functions;
  */
 function getTitle(array $menuItems = []): string
 {
-	$title = 'Страница';
-
     foreach ($menuItems as $menuItem) {
         if (isCurrentPage($menuItem['path'])) {
             return $menuItem['title'];
         }
     }
 
-    return $title;
+    return 'Cтраница';
 }

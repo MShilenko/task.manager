@@ -2,24 +2,17 @@
 
 namespace functions;
 
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/sortOptions.php';
+
 /**
  * Get menu items and setting
  * @param  array  $menuItems
- * @param  string  $order
+ * @param  string  $sort
  * @param  string  $additionalClass
  */
-function getMenuItems(array $menuItems = [], int $order = null, string $additionalClass = '')
-{
-    $menu       = [];
-    $sortColumn = array_column($menuItems, 'sort');
-
-    if (!is_null($order)) {
-        array_multisort($sortColumn, $order, $menuItems);
-    }
-
-    foreach ($menuItems as $item) {
-        $menu[$item['path']] = trimTitle($item['title']);
-    }
+function getMenuItems(array $menuItems = [], string $sort, string $additionalClass = '')
+{   
+    usort($menuItems, 'functions\\' . $sort);
 
     include $_SERVER['DOCUMENT_ROOT'] . '/template/menu.php';
 }
@@ -30,5 +23,6 @@ function getMenuItems(array $menuItems = [], int $order = null, string $addition
  */
 function trimTitle($string = ''): string
 {
-    return mb_strlen($string) > 15 ? mb_strimwidth($string, 0, 14, "...") : $string;
+    return mb_strimwidth($string, 0, 14, "...");
 }
+
