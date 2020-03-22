@@ -226,3 +226,6 @@ a:hover {
     border-color: #ff0000;
 }
 
+.hide{
+    display: none;
+}

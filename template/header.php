@@ -1,7 +1,4 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 
 $isAuth = false;
 
@@ -17,6 +14,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/functions/getTitle.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/main_menu.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/getMenuItems.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/functions/isCurrentPage.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/sessionAuthentication.php';
+
+functions\sessionAuthentication($isAuth);
+
 ?>
 <!DOCTYPE html>
 <html>
