@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 $isAuth = false;
 
 if (!empty($_POST)) {

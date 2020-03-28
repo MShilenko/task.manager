@@ -5,10 +5,14 @@
 		            <ul class="project-folders-v">
 		                <li class="project-folders-v-active">
 							<?php if (!isset($_SESSION['auth'])): ?>	
-		                		<a href="/?login=yes">Авторизация</a></li>
+		                		<a href="/?login=yes">Авторизация</a>
 		    				<?php else: ?>
-		    					<a href="/?login=no">Выйти</a></li>
+		    					<a href="/?login=no">Выйти</a>
 		    				<?php endif; ?>	            	
+		    			</li>
+		    			<?php if (isset($_SESSION['auth'])): ?>	
+							<li><a href="/profile/">Профиль</a></li>
+						<?php endif; ?>	 
 		                <li><a href="#">Регистрация</a></li>
 		                <li><a href="#">Забыли пароль?</a></li>
 		            </ul>
@@ -29,7 +33,7 @@
 			                            <tr class="hide">
 			                                <td class="iat">
 			                                    <label for="login_id">Ваш e-mail:</label>
-			                                    <input id="login_id" size="30" name="login" value="<?= $_COOKIE['login'] ?>">
+			                                    <input id="login_id" size="30" name="login" value="<?= htmlspecialchars($_COOKIE['login']) ?>">
 			                                </td>
 			                            </tr>
 			                        <?php else: ?>    

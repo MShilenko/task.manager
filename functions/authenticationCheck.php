@@ -2,16 +2,20 @@
 
 namespace functions;
 
+include $_SERVER['DOCUMENT_ROOT'] . '/functions/users.php';
+
 /**
- * @param  array  $logins
- * @param  array  $passwords
- * @return bool
+ * @return mixed
  */
-function authenticationCheck(array $logins, array $passwords): bool
+function authenticationCheck(): bool
 {
-    for ($i = 0; $i < count($logins); $i++) {
-        if ($logins[$i] === $_POST['login'] && $passwords[$i] === $_POST['password']) {
-            setcookie("login", $logins[$i], time() + 60 * 60 * 24 * 30, '/');
+    $users = getAllUSersForAuthentication();
+
+    for ($i = 0; $i < count($users); $i++) {
+        if ($users[$i]['email'] === $_POST['login'] && password_verify($_POST['password'], $users[$i]['password'])) {
+            $_SESSION['userId'] = $users[$i]['id'];
+            setcookie("login", $users[$i]['email'], time() + 60 * 60 * 24 * 30, '/');
+
             return true;
         }
     }

@@ -229,3 +229,18 @@ a:hover {
 .hide{
     display: none;
 }
+
+.profile{
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.profile td{
+    font-size: 14px; 
+    border: 1px solid;
+    padding: 10px;
+}
+
+.profile tr td:first-child{
+    font-weight: bold;
+}

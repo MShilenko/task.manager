@@ -7,8 +7,6 @@ namespace functions;
  */
 function sessionAuthentication(bool $isAuth)
 {
-    session_start();
-
     if (!isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != '/?login=yes') {
         header("Location: /?login=yes");
         exit;
@@ -20,6 +18,10 @@ function sessionAuthentication(bool $isAuth)
 
     if (isset($_GET['login']) && $_GET['login'] == 'no' && isset($_SESSION['auth'])) {
         unset($_SESSION['auth']);
+    }
+
+    if (isset($_GET['login']) && $_GET['login'] == 'no' && isset($_SESSION['userId'])) {
+        unset($_SESSION['userId']);
     }
 
     if (isset($_SESSION['auth']) && isset($_COOKIE['login'])) {
