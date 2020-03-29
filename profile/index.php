@@ -21,7 +21,7 @@ $userProfile = functions\getUSerForProfile($_SESSION['userId']);
         </tr>
         <tr>
             <td>Роли</td>
-            <td><?= functions\getUSerGroupsForProfile($_SESSION['userId']) ?></td>
+            <td><?= implode(', ', functions\getUSerGroupsForProfile($_SESSION['userId'])) ?></td>
         </tr>
         <tr>
             <td>Согласие на получение сообщений</td>

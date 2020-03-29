@@ -3,7 +3,7 @@
 session_start();
 $isAuth = false;
 
-if (!empty($_POST)) {
+if (!empty($_POST['userAuthentication'])) {
     include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/logins.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/dataArrays/passwords.php';
     include $_SERVER['DOCUMENT_ROOT'] . '/functions/authenticationCheck.php';

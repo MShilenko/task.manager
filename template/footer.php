@@ -12,6 +12,7 @@
 		    			</li>
 		    			<?php if (isset($_SESSION['auth'])): ?>	
 							<li><a href="/profile/">Профиль</a></li>
+							<li><a href="/posts/">Сообщения</a></li>
 						<?php endif; ?>	 
 		                <li><a href="#">Регистрация</a></li>
 		                <li><a href="#">Забыли пароль?</a></li>
@@ -23,7 +24,7 @@
 		            <?php if ($isAuth): ?>
 		                <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/success.php'; ?>
 		            <?php else: ?>
-		                <?php if (!empty($_POST) && !$isAuth): ?>
+		                <?php if (!empty($_POST['userAuthentication']) && !$isAuth): ?>
 		                    <?php include $_SERVER['DOCUMENT_ROOT'] . '/include/error.php'; ?>
 		                <?php endif;?>
 		                <?php if (isset($_GET['login']) && $_GET['login'] == 'yes'): ?>
@@ -51,7 +52,7 @@
 		                                </td>
 		                            </tr>
 		                            <tr>
-		                                <td><input type="submit" value="Войти"></td>
+		                                <td><input name="userAuthentication" type="submit" value="Войти"></td>
 		                            </tr>
 		                        </table>
 		                    </form>
@@ -68,6 +69,5 @@
     </div>
 
     <div class="footer">&copy;&nbsp;<nobr><?= date('Y') ?></nobr> Project.</div>
-
 </body>
 </html>

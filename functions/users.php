@@ -2,7 +2,7 @@
 
 namespace functions;
 
-include $_SERVER['DOCUMENT_ROOT'] . '/functions/connectDB.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/functions/connectDB.php';
 
 /**
  * @return array $result
@@ -67,19 +67,18 @@ function getUSerForProfile(int $id): array
 
 /**
  * User groups profile information
- * @param  int    $id [description]
+ * @param  int    $id
  * @return string $result
  */
-function getUSerGroupsForProfile(int $id): string
+function getUSerGroupsForProfile(int $id): array
 {
     $result    = [];
     $dbConnect = connectDB();
 
     $smtm = $dbConnect->query(
         "SELECT groups.name FROM groups
-        INNER JOIN user_group ON user_group.group_id = groups.id
-        INNER JOIN users ON user_group.user_id = users.id
-        AND users.id = $id;"
+            INNER JOIN user_group ON user_group.group_id = groups.id
+            AND user_group.user_id = $id;"
     );
 
     foreach ($smtm->fetchAll(\PDO::FETCH_ASSOC) as $group) {
@@ -88,5 +87,32 @@ function getUSerGroupsForProfile(int $id): string
 
     $dbConnect = null;
 
-    return implode(', ', $result);
+    return $result;
+}
+
+/**
+ * @param  int   $id
+ * @return array $result
+ */
+function getUsersRolesForMessageForm(int $id): array
+{
+    $administratorId = 1;
+    $writerId        = 2;
+    $result          = [];
+    $dbConnect       = connectDB();
+
+    $smtm = $dbConnect->query(
+        "SELECT DISTINCT users.id, users.name FROM users
+            INNER JOIN user_group ON users.id = user_group.user_id
+            AND (user_group.group_id = $administratorId OR user_group.group_id = $writerId)
+            AND users.id <> $id"
+    );
+
+    while ($row = $smtm->fetch(\PDO::FETCH_ASSOC)) {
+        $result[$row['id']] = $row['name'];
+    }
+
+    $dbConnect = null;
+
+    return $result;
 }

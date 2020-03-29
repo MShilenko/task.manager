@@ -230,17 +230,47 @@ a:hover {
     display: none;
 }
 
-.profile{
+.profile,
+.messages{
     border-collapse: collapse;
     margin-bottom: 10px;
 }
 
-.profile td{
+.profile td,
+.messages td,
+.messages th{
     font-size: 14px; 
     border: 1px solid;
     padding: 10px;
+    vertical-align: top;
 }
 
 .profile tr td:first-child{
     font-weight: bold;
+}
+
+.send-message-button{
+    margin: 15px 0px 20px 0px;
+}
+
+.send-message-button a{
+    background: #333333;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.send-message-button a:hover{
+    opacity: 0.8;
+}
+
+#sendMessage textarea{
+    width: 98.8%;
+    height: 50px;
+}
+
+#sendMessage select{
+    width: 40%;
+    padding: 5px 0px;
 }

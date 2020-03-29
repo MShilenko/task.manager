@@ -14,6 +14,18 @@ $menuItems = [
         'hide'  => 1,
     ],
     [
+        'title' => 'Сообщения',
+        'path'  => '/posts/',
+        'sort'  => 1,
+        'hide'  => 1,
+    ],    
+    [
+        'title' => 'Отправить сообщение',
+        'path'  => '/posts/add/',
+        'sort'  => 1,
+        'hide'  => 1,
+    ],
+    [
         'title' => 'О компании',
         'path'  => '/route/about/',
         'sort'  => 2,
